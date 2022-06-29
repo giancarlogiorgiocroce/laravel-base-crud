@@ -6,10 +6,11 @@
     <h3>di tutti i fumetti della collezione</h3>
     @foreach ($comics as $comic)
         <ul>
-            <li>{{$comic->id}}</li>
-            <li>{{$comic->title}}</li>
+            <li>Numero: {{$comic->id}}</li>
+            <li><strong>{{$comic->title}}</strong></li>
             <li><img src="{{$comic->image}}" alt="{{$comic->title}}"></li>
-            <li>{{$comic->type}}</li>
+            <li>Tipo: {{$comic->type}}</li>
+            <li><a href="{{route('comics.show', $comic)}}">Altre info</a></li>
         </ul>
     @endforeach
 @endsection
