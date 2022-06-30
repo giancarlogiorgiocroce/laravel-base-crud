@@ -10,13 +10,14 @@
     <title>Es-Crud | @yield('title')</title>
 </head>
 <body>
-    <nav class="container">
+    <nav class="my_container">
         <ul>
             <li><a href="{{route('home')}}">Home</a></li>
             <li><a href="{{route('comics.index')}}">Index</a></li>
+            <li><a href="{{route('comics.create')}}">Create</a></li>
         </ul>
     </nav>
-    <div class="container">
+    <div class="my_container">
         @yield('content')
     </div>
 </body>

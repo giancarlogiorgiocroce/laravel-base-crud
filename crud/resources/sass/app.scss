@@ -1,5 +1,7 @@
 //
-.container{
+@import '~bootstrap/scss/bootstrap.scss';
+
+.my_container{
     margin: 0 auto;
     width: 80%;
 }
@@ -16,4 +18,12 @@ nav{
             }
         }
     }
+}
+
+ul.col-3{
+    list-style: none;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
 }
