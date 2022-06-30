@@ -19,6 +19,7 @@
                             @method('DELETE')
                             <button class="btn btn-danger">Elimina</button>
                         </form>
+                        <a class="btn btn-success" href="{{ route('comics.edit', $comic) }}">Aggiorna</a>
                     </li>
                 </ul>
             @endforeach
