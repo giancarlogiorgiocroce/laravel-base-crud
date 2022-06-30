@@ -12,7 +12,14 @@
                     <li><strong>{{$comic->title}}</strong></li>
                     <li><img src="{{$comic->image}}" alt="{{$comic->title}}"></li>
                     <li>Tipo: {{$comic->type}}</li>
-                    <li><a class="btn btn-primary" href="{{route('comics.show', $comic)}}">Altre info</a></li>
+                    <li>
+                        <a class="btn btn-primary" href="{{route('comics.show', $comic)}}">Altre info</a>
+                        <form class="d-inline" action="{{route('comics.destroy', $comic)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Elimina</button>
+                        </form>
+                    </li>
                 </ul>
             @endforeach
         </div>
