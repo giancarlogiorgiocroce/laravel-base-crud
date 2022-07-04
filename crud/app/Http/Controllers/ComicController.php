@@ -52,11 +52,25 @@ class ComicController extends Controller
         $new_comics->fill($data);
         $new_comics->save();
 
-        $request->validate([
-            "title" => "required|max:100|min:5",
-            "image" => "required|max:255",
-            "type" => "required|max:20|min:2"
-        ]);
+        $request->validate(
+            [
+                "title" => "required|max:100|min:5",
+                "image" => "required|max:255",
+                "type" => "required|max:20|min:2"
+            ],
+            [
+                "title.required"=>"Questo campo è obbligatorio",
+                "title.max"=>"Questo campo non può contenere più di :max caratteri",
+                "title.min"=>"Questo campo non deve contenere meno di :min caratteri",
+
+                "image.required"=>"Questo campo è obbligatorio",
+                "image.max"=>"Questo campo non può contenere più di :max caratteri",
+
+                "type.required"=>"Questo campo è obbligatorio",
+                "type.max"=>"Questo campo non può contenere più di :max caratteri",
+                "type.min"=>"Questo campo non deve contenere meno di :min caratteri",
+            ]
+        );
 
         return redirect()->route('comics.index');
     }
