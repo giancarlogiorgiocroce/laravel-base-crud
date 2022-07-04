@@ -15,7 +15,6 @@ class ComicController extends Controller
     public function index()
     {
         $comics = Comic::orderBy('id', 'desc')->get();
-        // dump($comics);
         return view('comics.index', compact('comics'));
     }
 
@@ -52,6 +51,12 @@ class ComicController extends Controller
         $new_comics = new Comic();
         $new_comics->fill($data);
         $new_comics->save();
+
+        $request->validate([
+            "title" => "required|max:100|min:5",
+            "image" => "required|max:255",
+            "type" => "required|max:20|min:2"
+        ]);
 
         return redirect()->route('comics.index');
     }
