@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComicRequest;
 use Illuminate\Http\Request;
 use App\Comic;
 
@@ -34,7 +35,7 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
         // $data = $request->all();
 
@@ -51,26 +52,6 @@ class ComicController extends Controller
         $new_comics = new Comic();
         $new_comics->fill($data);
         $new_comics->save();
-
-        $request->validate(
-            [
-                "title" => "required|max:100|min:5",
-                "image" => "required|max:255",
-                "type" => "required|max:20|min:2"
-            ],
-            [
-                "title.required"=>"Questo campo è obbligatorio",
-                "title.max"=>"Questo campo non può contenere più di :max caratteri",
-                "title.min"=>"Questo campo non deve contenere meno di :min caratteri",
-
-                "image.required"=>"Questo campo è obbligatorio",
-                "image.max"=>"Questo campo non può contenere più di :max caratteri",
-
-                "type.required"=>"Questo campo è obbligatorio",
-                "type.max"=>"Questo campo non può contenere più di :max caratteri",
-                "type.min"=>"Questo campo non deve contenere meno di :min caratteri",
-            ]
-        );
 
         return redirect()->route('comics.index');
     }
@@ -108,7 +89,7 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(ComicRequest $request, Comic $comic)
     {
         $data = $request->all();
 
